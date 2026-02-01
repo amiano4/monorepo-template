@@ -1,13 +1,15 @@
-FROM amiano4/php84
+FROM amiano4/php83
 
-WORKDIR /var/www/backend
+ARG UID=1000
+ARG GID=1000
+RUN groupadd -g ${GID} app && useradd -u ${UID} -g ${GID} -m app
+USER app
+
+WORKDIR /var/www
 
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
 COPY apps/backend ./
-
-RUN mkdir -p storage bootstrap/cache \
-    && chown -R www-data:www-data storage bootstrap/cache
 
 EXPOSE 9000
 

@@ -4,10 +4,9 @@ services:
       context: ..
       dockerfile: infra/docker/backend/Dockerfile
     working_dir: /var/www
+    user: "1000:1000"
     volumes:
       - ../apps/backend:/var/www
-      - backend_vendor:/var/www/vendor
-      - backend_storage:/var/www/storage
       - ./docker/backend/php.ini:/usr/local/etc/php/conf.d/99-overrides.ini:ro
     environment:
       APP_ENV: local
@@ -67,11 +66,11 @@ services:
       context: ..
       dockerfile: infra/docker/frontend/Dockerfile
     working_dir: /var/www/frontend
+    user: "1000:1000"
     ports:
       - "9000:9000"
     volumes:
       - ../apps/frontend:/var/www/frontend
-      - frontend_node_modules:/var/www/frontend/node_modules
     environment:
       NODE_ENV: development
     command: npm run dev -- --host 0.0.0.0 --port 9000
@@ -88,7 +87,4 @@ services:
       - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf:ro
 
 volumes:
-  backend_vendor:
-  backend_storage:
-  frontend_node_modules:
   mysql_data:
