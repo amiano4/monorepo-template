@@ -21,5 +21,11 @@ project/
 - Install deps manually in `apps/backend` and `apps/frontend`.
 - Use `make up` to start dev containers.
 
+## Services (dev)
+- Backend: https://localhost:8443 (HTTP on http://localhost:8000 redirects to HTTPS)
+- PhpMyAdmin: http://localhost:8080
+- MailHog UI: http://localhost:8025
+
 ## Notes
+- Self-signed TLS certs are stored in `infra/docker/nginx/ssl-certificates`.
 - Production deployment should not rely on `infra/`.
