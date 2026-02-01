@@ -1,4 +1,4 @@
-SHELL := /bin/bash
+SHELL := /usr/bin/env bash
 
 COMPOSE_FILE := infra/docker-compose.yml
 COMPOSE := docker compose -f $(COMPOSE_FILE)
@@ -43,7 +43,7 @@ ps:
 	$(COMPOSE) ps
 
 shell:
-	$(COMPOSE) exec backend sh
+	$(COMPOSE) exec backend bash
 
 artisan:
 	$(COMPOSE) exec backend php artisan $(cmd)
