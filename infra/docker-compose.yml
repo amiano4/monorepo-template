@@ -3,11 +3,11 @@ services:
     build:
       context: ..
       dockerfile: infra/docker/backend/Dockerfile
-    working_dir: /var/www/backend
+    working_dir: /var/www
     volumes:
-      - ../apps/backend:/var/www/backend
-      - backend_vendor:/var/www/backend/vendor
-      - backend_storage:/var/www/backend/storage
+      - ../apps/backend:/var/www
+      - backend_vendor:/var/www/vendor
+      - backend_storage:/var/www/storage
       - ./docker/backend/php.ini:/usr/local/etc/php/conf.d/99-overrides.ini:ro
     environment:
       APP_ENV: local
@@ -37,7 +37,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ../apps/backend:/var/www/backend:ro
+      - ../apps/backend:/var/www:ro
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
       - ./docker/nginx/ssl-certificates:/etc/ssl:ro
     depends_on:
