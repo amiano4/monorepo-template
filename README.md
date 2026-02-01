@@ -22,7 +22,7 @@ project/
 - Use `make up` to start dev containers.
 
 ## Services (dev)
-- Backend: https://localhost:8443 (HTTP on http://localhost:8000 redirects to HTTPS)
+- Backend: https://localhost (HTTP on http://localhost redirects to HTTPS)
 - PhpMyAdmin: http://localhost:8080
 - MailHog UI: http://localhost:8025
 
